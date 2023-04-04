@@ -1,0 +1,21 @@
+{% extends 'hola_mundo/base.html'%}
+
+
+{%block titulo%} Listado de animales {%endblock%}
+
+{%block listado%}
+
+<form action="{% url 'animaless-create' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Guardar">
+</form>
+
+<ul>
+    {%  for animal in animales %}
+        <li>{{animal}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% block title %} Total: {{total_animales}} {% endblock %}
